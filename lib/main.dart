@@ -9,7 +9,7 @@ import 'package:hehe/pages/signup.dart';
 import 'pages/menu.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/signup',
+  initialRoute: '/menu',
  routes: {
    '/' : (context) => Dashboard(),
    '/menu' : (context) => Menu(),
