@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hehe/Services/product.dart';
 import 'package:hehe/Services/menuCard.dart';
 import 'package:http/http.dart' as http;
@@ -15,7 +16,7 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
   late Future<List<dynamic>> products;
   Future<List<dynamic>> fetchData() async{
-    final response = await http.get(Uri.parse('10.0.2.2:8080/products'));
+    final response = await http.get(Uri.parse('http://10.0.2.2:8080/products'));
     final data = jsonDecode(response.body);
     List products = <Product>[];
     for(var product in data){
@@ -74,13 +75,49 @@ class _MenuState extends State<Menu> {
             letterSpacing: 2.0,
           ),
         ),
+        centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.all(5.0),
-        child: Column(
-          // children: products.map((product) =>Menucard(product:product)).toList(),
-        ),
+        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+        child: FutureBuilder(
+          future: products,
+          builder: (context, snapshots){
+    if(snapshots.connectionState == ConnectionState.waiting){
+    return Center(
+    child: SpinKitHourGlass(
+    color: Colors.teal,
+    size: 60.0,
+    ),
+    );
+    }
+    if (snapshots.hasData){
+    List products = snapshots.data!;
+    return Padding(
+      padding: EdgeInsets.all(3.0),
+      child: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (context, index){
+          return Card(
+            color: Colors.teal,
+            child: ListTile(
+              title: Column(
+                children: [
+                  Text(products[index].productName),
+                  Text(products[index].price.toString()),
+                ],
+              )
+            ),
+          );
+        },
       ),
+    );
+    }
+    return Center(
+    child: Text('Unable to load Data'),
+    );
+    },
+      ),
+    ),
     );
   }
 }

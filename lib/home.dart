@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
           children: <Widget> [
             Center(
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/profile.png'),
+                backgroundImage: AssetImage('assets/ccc.jpg'),
                 backgroundColor: Colors.teal,
                 radius: 70.0,
               ),
