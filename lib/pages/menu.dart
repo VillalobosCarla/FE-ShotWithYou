@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hehe/Services/product.dart';
 import 'package:hehe/Services/menuCard.dart';
+import 'package:hehe/pages/selectedProduct.dart';
 import 'package:http/http.dart' as http;
 
 class Menu extends StatefulWidget {
@@ -105,7 +106,16 @@ class _MenuState extends State<Menu> {
                   Text(products[index].productName),
                   Text(products[index].price.toString()),
                 ],
-              )
+              ),
+            onTap: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                    selectedProduct(product: products[index]),
+                )
+          );
+          },
             ),
           );
         },

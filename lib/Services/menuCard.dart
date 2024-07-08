@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hehe/Services/product.dart';
+import 'package:hehe/pages/selectedProduct.dart';
 
 class Menucard extends StatelessWidget {
   final Product product;
@@ -29,7 +30,7 @@ class Menucard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+          )
+      );
   }
 }
