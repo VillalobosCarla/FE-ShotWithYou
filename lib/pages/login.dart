@@ -9,6 +9,8 @@ class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
+  bool _obscure = true;
+  IconData _obscureIcon = Icons.visibility_off;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,7 @@ class _LoginState extends State<Login> {
                       maxLength: 40,
                       decoration: InputDecoration(
                         labelText: 'Email',
+                        prefixIcon: Icon(Icons.email),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -55,9 +58,23 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 30.0),
                     TextFormField(
-                      obscureText: true,
+                      obscureText: _obscure,
                       decoration: InputDecoration(
                         labelText: 'Password',
+                        prefixIcon: Icon(Icons.lock_rounded),
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscureIcon),
+                          onPressed: (){
+                            setState(() {
+                              _obscure = !_obscure;
+                              if (_obscure){
+                                _obscureIcon = Icons.visibility_off;
+                              }else{
+                                _obscureIcon = Icons.visibility;
+                              }
+                            });
+                          },
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
