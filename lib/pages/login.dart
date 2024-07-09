@@ -144,7 +144,7 @@ class _LoginState extends State<Login> {
                           child: Text(
                             'Signup Here',
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.teal,
                             ),
                           ),
                           onTap: ()=> Navigator.popAndPushNamed(context, '/signup'),
