@@ -16,48 +16,49 @@ class _DashboardState extends State<Dashboard> {
         title: Text('Dashboard'),
         backgroundColor: Colors.teal,
         centerTitle: true,
+        leading: IconButton(
+          icon: Image.asset('assets/img_1.png'),
+          onPressed: (){},
+        ),
       ),
 
-      body: Center(
-        child: Container(
+      body: Container(
+        child: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+          Center(
+          child: Image.asset(
+          'assets/img.png',
+            width: 360,
+          ),
+        ),
               ElevatedButton(
                 onPressed: (){
                   Navigator.pushNamed(context, '/menu');
+
                 },
-                child: Text('Go to Menu',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.teal)
+                child: Text('Menu',),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.black,
                 ),
               ),
               ElevatedButton(
                 onPressed: (){
                   Navigator.pushNamed(context, 'profile');
                 },
-                child: Text('Go to User Profile',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.teal)
+                child: Text('Profile',),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.black,
                 ),
               ),
             ],
           ),
         ),
-      ),
-
-
+      )
     );
   }
 }
+

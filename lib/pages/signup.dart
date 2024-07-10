@@ -37,6 +37,15 @@ class _signupState extends State<Signup> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text('Dashboard'),
+          backgroundColor: Colors.teal,
+          centerTitle: true,
+          leading: IconButton(
+            icon: Image.asset('assets/img_1.png'),
+            onPressed: (){},
+          ),
+        ),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.fromLTRB(15.0, 50.0, 10.0, 0),

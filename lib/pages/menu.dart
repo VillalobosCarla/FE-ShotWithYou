@@ -17,7 +17,7 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
   late Future<List<dynamic>> products;
   Future<List<dynamic>> fetchData() async{
-    final response = await http.get(Uri.parse('http://10.0.2.2:8080/products'));
+    final response = await http.get(Uri.parse('http://10.0.2.2:8080/api/v1/product/all'));
     final data = jsonDecode(response.body);
     List products = <Product>[];
     for(var product in data){
@@ -67,16 +67,13 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Dashboard'),
         backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-        title: Text(
-          'Menu',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2.0,
-          ),
-        ),
         centerTitle: true,
+        leading: IconButton(
+          icon: Image.asset('assets/img_1.png'),
+          onPressed: (){},
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
