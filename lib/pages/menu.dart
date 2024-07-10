@@ -67,7 +67,7 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: Text('Menu'),
         backgroundColor: Colors.teal,
         centerTitle: true,
         leading: IconButton(

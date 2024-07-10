@@ -27,69 +27,103 @@ class _selectedProductState extends State<selectedProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
+      appBar: AppBar(
         title: Text('Orders'),
-    backgroundColor: Colors.teal,
-    centerTitle: true,
-    ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            children: [
-              Text(widget.product.productName),
-              Text(widget.product.description),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                  '₱ ${totalAmount.toString()}',
-                  style:  TextStyle(
-                    fontSize: 20.0,
-    ),
-              ),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: (){
-                      setState(() {
-                        if(numberOfOrders > 1){
-                          numberOfOrders -= 1;
-                          totalAmount = product.price * numberOfOrders;
-                        }
-                      });
-                    },
-                    icon: Icon(Icons.remove),
-                    style: const ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(Colors.teal)
-                    ),
-                  ),
-                  Text(
-                    numberOfOrders.toString(),
+        backgroundColor: Colors.teal,
+        centerTitle: true,
+        leading: IconButton(
+          icon: Image.asset('assets/img_1.png'),
+          onPressed: (){},
+        ),
+      ),
+      body: Center(
+        child: SizedBox(
+          width: 400,
+          height: 700,
+          child: Card(
+            color: Colors.teal[200],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        product.productName,
                         style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
                           fontSize: 20.0,
                         ),
+                      ),
+                      Text(
+                        product.description,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    onPressed:(){
-                      setState(() {
-                        numberOfOrders += 1;
-                        totalAmount = product.price * numberOfOrders;
-                      });
-    },
-                    icon: Icon(Icons.add),
-                    style: const ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(Colors.teal)
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '₱ ${totalAmount.toStringAsFixed(2)}',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: (){
+                              setState(() {
+                                numberOfOrders -= 1;
+                                totalAmount = product.price * numberOfOrders;
+                              });
+                            },
+                            icon: Icon(Icons.remove),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black),
+                          ),
+                          Text(
+                            numberOfOrders.toString(),
+                            style: TextStyle(
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: (){
+                              setState(() {
+                                numberOfOrders += 1;
+                                totalAmount = product.price * numberOfOrders;
+                              });
+                            },
+                            icon: Icon(Icons.add),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black),
+
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              )
-            ],
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
-}
+  }
 }

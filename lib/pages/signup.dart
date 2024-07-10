@@ -38,7 +38,7 @@ class _signupState extends State<Signup> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Dashboard'),
+          title: Text('Sign Up'),
           backgroundColor: Colors.teal,
           centerTitle: true,
           leading: IconButton(
@@ -46,12 +46,19 @@ class _signupState extends State<Signup> {
             onPressed: (){},
           ),
         ),
-        body: SafeArea(
-          child: Padding(
+        body: SafeArea (
+          child: Padding (
             padding: EdgeInsets.fromLTRB(15.0, 50.0, 10.0, 0),
-            child: Column(children: <Widget>[
+            child: Column (
+                children: <Widget> [
+                  Center(
+                    child: Image.asset(
+                      'assets/img.png',
+                      width: 250,
+                    ),
+                  ),
               Text(
-                'Lets Get Started!',
+                'LETS GET STARTED!',
                 style: TextStyle(
                     fontWeight: FontWeight.w700,
                     letterSpacing: 2.0,
