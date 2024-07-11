@@ -33,7 +33,9 @@ class _selectedProductState extends State<selectedProduct> {
         centerTitle: true,
         leading: IconButton(
           icon: Image.asset('assets/img_1.png'),
-          onPressed: (){},
+          onPressed: (){
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Center(
@@ -49,20 +51,32 @@ class _selectedProductState extends State<selectedProduct> {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      Text(
-                        product.productName,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                      Container(
+                        width: 410,
+                        height: 250,
+                        child: Image.network(product.url),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(15.0),
+                        child: Text(
+                          product.productName,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
-                      Text(
-                        product.description,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
+                      Container(
+                        margin: EdgeInsets.all(15.0),
+                        child: Text(
+                          product.description,
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                     ],
@@ -84,16 +98,15 @@ class _selectedProductState extends State<selectedProduct> {
                       Row(
                         children: [
                           IconButton(
-                            onPressed: (){
+                            onPressed: () {
                               setState(() {
-                                numberOfOrders -= 1;
-                                totalAmount = product.price * numberOfOrders;
+                                if (numberOfOrders > 0) {
+                                  numberOfOrders -= 1;
+                                  totalAmount = product.price * numberOfOrders;
+                                }
                               });
                             },
                             icon: Icon(Icons.remove),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: Colors.black),
                           ),
                           Text(
                             numberOfOrders.toString(),
@@ -102,21 +115,31 @@ class _selectedProductState extends State<selectedProduct> {
                             ),
                           ),
                           IconButton(
-                            onPressed: (){
+                            onPressed: () {
                               setState(() {
                                 numberOfOrders += 1;
                                 totalAmount = product.price * numberOfOrders;
                               });
                             },
                             icon: Icon(Icons.add),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: Colors.black),
-
                           ),
                         ],
                       ),
                     ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/menu');
+                    },
+                    icon: Icon(Icons.shopping_cart),
+                    label: Text('Check Out'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      foregroundColor: Colors.black,
+                    ),
                   ),
                 ),
               ],

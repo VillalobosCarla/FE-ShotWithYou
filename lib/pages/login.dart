@@ -45,12 +45,7 @@ class _LoginState extends State<Login> {
         title: Text('Log In'),
         backgroundColor: Colors.teal,
         centerTitle: true,
-        leading: IconButton(
-          icon: Image.asset('assets/img_1.png'),
-          onPressed: (){
-            Navigator.pushReplacementNamed(context, '/');
-          },
-        ),
+
       ),
       body: SafeArea (
         child: Padding (

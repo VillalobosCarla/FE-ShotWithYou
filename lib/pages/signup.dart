@@ -43,7 +43,9 @@ class _signupState extends State<Signup> {
           centerTitle: true,
           leading: IconButton(
             icon: Image.asset('assets/img_1.png'),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.pop(context);
+            },
           ),
         ),
         body: SafeArea (

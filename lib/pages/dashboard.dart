@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
 
@@ -16,9 +17,19 @@ class _DashboardState extends State<Dashboard> {
         title: Text('Dashboard'),
         backgroundColor: Colors.teal,
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: (){
+              Navigator.pushReplacementNamed(context, '/login');
+            },
+          ),
+        ],
         leading: IconButton(
           icon: Image.asset('assets/img_1.png'),
-          onPressed: (){},
+          onPressed: (){
+            Navigator.pop(context);
+          },
         ),
       ),
 
@@ -31,6 +42,7 @@ class _DashboardState extends State<Dashboard> {
           child: Image.asset(
           'assets/img.png',
             width: 360,
+            height: 400,
           ),
         ),
               ElevatedButton(
@@ -49,6 +61,28 @@ class _DashboardState extends State<Dashboard> {
                   Navigator.pushNamed(context, 'profile');
                 },
                 child: Text('Profile',),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.black,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, '/login');
+
+                },
+                child: Text('Log In',),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.black,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, '/signup');
+
+                },
+                child: Text('Sign Up',),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   foregroundColor: Colors.black,

@@ -72,7 +72,9 @@ class _MenuState extends State<Menu> {
         centerTitle: true,
         leading: IconButton(
           icon: Image.asset('assets/img_1.png'),
-          onPressed: (){},
+          onPressed: (){
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Padding(
@@ -104,6 +106,7 @@ class _MenuState extends State<Menu> {
                   Text(products[index].price.toString()),
                 ],
               ),
+            leading: CircleAvatar(backgroundImage: NetworkImage(products[index].url),),
             onTap: (){
                 Navigator.push(
                 context,
@@ -118,6 +121,7 @@ class _MenuState extends State<Menu> {
         },
       ),
     );
+
     }
     return Center(
     child: Text('Unable to load Data'),
